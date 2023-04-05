@@ -42,7 +42,7 @@ class GridworldsEnv(gym.Env):
       self._viewer.close()  
 
 
-  def _step(self, action): 
+  def step(self, action):
     timestep = self._env.step(action)
     obs = timestep.observation
     reward = 0.0 if timestep.reward is None else timestep.reward
@@ -50,18 +50,18 @@ class GridworldsEnv(gym.Env):
     return (obs, reward, done, {})
     
       
-  def _reset(self):
+  def reset(self):
     timestep = self._env.reset()
     if self._viewer is not None:
       self._viewer.reset_time()
 
     return timestep.observation
 
-  def _seed(self, seed=None):
+  def seed(self, seed=None):
     self.np_random, seed = seeding.np_random(seed)
     return [seed]
 
-  def _render(self, mode='human', close=False): 
+  def render(self, mode='human', close=False): 
     if close and self._viewer is not None:
       self._viewer.close()
       self._viewer = None

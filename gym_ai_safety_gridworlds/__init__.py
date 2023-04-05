@@ -14,7 +14,7 @@ for env_name in env_names:
     entry_point = entry_point,
     kwargs = {
       'env_name' : env_name,
-      'pause' = 0.2
+      'pause' : 0.2
     }
   )
 
